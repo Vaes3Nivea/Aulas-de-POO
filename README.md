@@ -44,7 +44,7 @@ print(f"Saldo no final do ano:",saldo)
 
 
 
-#valor aproximado do pi
+# valor aproximado do pi
 num_termos = int(input("Digite um numero: "))
 pi = 0
 for i in range(num_termos):
