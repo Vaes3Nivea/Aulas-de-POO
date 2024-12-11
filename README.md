@@ -1,4 +1,15 @@
 # Aulas-de-POO
+# tabela de multiplicação do 5 até o 15
+inicio = 5
+fim = 15
+
+for i in range(inicio, fim +1):
+  for j in range(inicio , fim +1):
+    resultado = i * j
+    print(f'{i}*{j} = {resultado}')
+  print()
+
+
 
 # cpf informado
 cpf_informado = input("Digite o numero de cpf: ")
