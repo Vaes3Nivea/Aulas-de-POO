@@ -1,0 +1,136 @@
+#Prova_POO
+
+QUESTÃO 3
+def calcular_media_notas():
+    """Calcula a média de notas inseridas pelo usuário e exibe mensagens personalizadas."""
+
+    notas = []
+    while True:
+        nota = input("Digite uma nota (ou 'sair' para finalizar): ")
+        if nota.lower() == 'sair':
+            break
+        try:
+            nota = float(nota)
+            if 0 <= nota <= 10:
+                notas.append(nota)
+            else:
+                print("Nota inválida! Digite um valor entre 0 e 10.")
+        except ValueError:
+            print("Entrada inválida! Digite um número ou 'sair'.")
+
+    if not notas:
+        print("Nenhuma nota inserida.")
+        return
+
+    media = sum(notas) / len(notas)
+    print(f"A média das notas é: {media:.2f}")
+
+    if media >= 7:
+        print("Parabéns, você foi aprovado!")
+    elif media >= 5:
+        print("Você está em recuperação.")
+    else:
+        print("Você foi reprovado.")
+
+if __name__ == "__main__":
+    calcular_media_notas()
+
+QUESTÃO 4
+import random
+
+def gerar_matriz_quadrada(tamanho):
+    """Gera uma matriz quadrada com valores aleatórios."""
+    matriz = []
+    for _ in range(tamanho):
+        linha = [random.randint(1, 10) for _ in range(tamanho)]  # Valores entre 1 e 10
+        matriz.append(linha)
+    return matriz
+
+def multiplicar_matrizes(matriz1, matriz2):
+    """Multiplica duas matrizes quadradas."""
+    tamanho = len(matriz1)
+    matriz_resultado = [[0] * tamanho for _ in range(tamanho)]  # Inicializa matriz resultado
+
+    for i in range(tamanho):
+        for j in range(tamanho):
+            for k in range(tamanho):
+                matriz_resultado[i][j] += matriz1[i][k] * matriz2[k][j]
+    return matriz_resultado
+
+def exibir_matriz(matriz):
+    """Exibe uma matriz de forma formatada."""
+    for linha in matriz:
+        print(linha)
+
+# Execução do programa:
+tamanho_matriz = int(input("Digite o tamanho da matriz quadrada: "))
+matriz1 = gerar_matriz_quadrada(tamanho_matriz)
+matriz2 = gerar_matriz_quadrada(tamanho_matriz)
+
+print("\nMatriz 1:")
+exibir_matriz(matriz1)
+print("\nMatriz 2:")
+exibir_matriz(matriz2)
+
+matriz_resultado = multiplicar_matrizes(matriz1, matriz2)
+print("\nMatriz Resultante:")
+exibir_matriz(matriz_resultado)
+
+
+QUESTÃO 5
+class Ave(Animal):
+    """Classe para representar uma ave."""
+
+    def __init__(self, nome, idade, envergadura):
+        super().__init__(nome, idade)
+        self.envergadura = envergadura
+
+    def emitir_som(self):
+        """Método para emitir som de ave."""
+        print("Som de ave!")
+
+    def locomover(self):
+        """Método para locomoção de ave."""
+        print("Ave voando!")
+
+class Reptil(Animal):
+    """Classe para representar um réptil."""
+
+    def __init__(self, nome, idade, tipo_escamas):
+        super().__init__(nome, idade)
+        self.tipo_escamas = tipo_escamas
+
+    def emitir_som(self):
+        """Método para emitir som de réptil."""
+        print("Som de réptil!")
+
+    def locomover(self):
+        """Método para locomoção de réptil."""
+        print("Réptil rastejando!")
+
+class Mamifero(Animal):
+    """Classe para representar um mamífero."""
+
+    def __init__(self, nome, idade, tipo_pelo):  
+        super().__init__(nome, idade)
+        self.tipo_pelo = tipo_pelo
+
+    def emitir_som(self):
+        """Método para emitir som de mamífero."""
+        print("Som de mamífero!")
+
+    def locomover(self):
+        """Método para locomoção de mamífero."""
+        print("Mamífero andando!")  
+
+mamifero = Mamifero("Leão", 5, "Pelos grossos")
+ave = Ave("Águia", 3, 2.5)
+reptil = Reptil("Cobra", 2, "Escamas lisas")
+
+animais = [mamifero, ave, reptil]
+
+for animal in animais:
+    print(f"Nome: {animal.nome}, Idade: {animal.idade}")
+    animal.emitir_som()
+    animal.locomover()
+    print("-" * 20)
