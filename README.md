@@ -73,26 +73,5 @@ else:
 
 
 
-# criar classe Banco
-class Banco:
-  def __init__(self, saldo_inicio = 0):
-    self.saldo = saldo_inicio
 
-  def creditar(self, valor):
-    if valor > 0:
-      self.saldo += valor
-      return True
-    else:
-      return False
-
-  def tranferir(self, valor, destino):
-    if valor > 0 and valor <= self.saldo:
-      self.saldo -= valor
-      destino.creditar(valor)
-      return True
-    else:
-      return False
-
-  def saldo(self):
-    return self.saldo
 
